@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 export default function TodoApp() {
+    const [newTodo, setNewTodo] = useState('')
     const [todos, setTodos] = useState([
         {
             id: 1,
@@ -18,6 +19,19 @@ export default function TodoApp() {
             isComplete: false
         }
     ])
+
+    const addTodo = (e) => {
+        e.preventDefault()
+        setTodos([
+            ...todos,
+            {
+                id: todos.length + 1,
+                text: newTodo,
+                isComplete: false
+            }
+        ])
+        setNewTodo('')
+    }
 
     const toggleTodo = (id) => {
         const newTodos = todos.map(todo => {
@@ -39,6 +53,17 @@ export default function TodoApp() {
     return (
         <div>
             <h1>TodoApp Component</h1>
+            <form onSubmit={addTodo}>
+                <input
+                    type='text'
+                    value={newTodo}
+                    onChange={e => setNewTodo(e.target.value)}
+                    placeholder='Add Todo'
+
+                />
+                <button type='submit'>Add Todo</button>
+            </form>
+
             <ul>
                 {todos.map(todo => (
                     <li key={todo.id}>
