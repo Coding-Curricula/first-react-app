@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import './TodoApp.css'
+
 export default function TodoApp() {
     const [newTodo, setNewTodo] = useState('')
     const [todos, setTodos] = useState([
@@ -51,7 +53,7 @@ export default function TodoApp() {
     console.log(todos)
 
     return (
-        <div>
+        <div className='container'>
             <h1>TodoApp Component</h1>
             <form onSubmit={addTodo}>
                 <input

@@ -2,9 +2,11 @@ import React from 'react'
 
 import TodoApp from './components/TodoApp'
 
+import './App.css'
+
 export default function App() {
     return (
-        <div>
+        <div className="App">
             <TodoApp />
         </div>
     )
